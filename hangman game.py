@@ -34,13 +34,14 @@ while playAgain.upper() == 'Y':
     playerGuesses = []
     incorrectGuesses = []
     # Choosing category and word
-    while categoryChoice not in ('1', '2', '3', '4'): 
+    while categoryChoice not in ('1', '2', '3', '4', '5'): 
         categoryChoice = input(
         'Which category would you like to choose for your word?\n'
         'Fruits (Type 1)\n'
         'Vegetables (Type 2)\n'
         'Animals (Type 3)\n'
         'School (Type 4)\n'
+        'Surprise Me! (Type 5)\n'
         )
         match categoryChoice:
             case '1':
@@ -51,8 +52,10 @@ while playAgain.upper() == 'Y':
                 wordList = animalList
             case '4':
                 wordList = schoolList
+            case '5':
+                wordList = schoolList + animalList + vegetableList + fruitList
             case _:
-                print("Invalid choice. Please type 1, 2, 3, or 4.")
+                print("Invalid choice. Please type 1, 2, 3, 4, or 5.")
     hiddenWord = random.choice(wordList)
     # Guessing word loop
     while health > 0 and wordComplete == False:
