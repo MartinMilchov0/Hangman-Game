@@ -1,8 +1,5 @@
 import random
 
-startGame = ''
-playAgain = 'Y'
-totalScore = 0
 rules = '''Welcome to Hangman! Your goal is to guess a hidden word either by guessing individual 
 letters in the word or the entire word.
 You have 5 health at the start and everytime you guess a letter incorrectly you lose 1 health.

@@ -3,23 +3,23 @@ import game_logic
 def main():
     print(game_logic.rules)
 
-    start_game = input("Would you like to begin? (Y for Yes/ Anything else for No): ").upper()
-    if start_game != 'Y':
+    startGame = input("Would you like to begin? (Y for Yes/ Anything else for No): ").upper()
+    if startGame != 'Y':
         print("Maybe next time!")
         return
 
-    total_score = 0
-    play_again = 'Y'
+    totalScore = 0
+    playAgain = 'Y'
 
-    while play_again == 'Y':
+    while playAgain == 'Y':
         score = game_logic.play_game()
-        total_score += score
+        totalScore += score
         print("Score:", score)
-        print("Total Score:", total_score)
+        print("Total Score:", totalScore)
 
-        play_again = input("Would you like to play again? (Y/N): ").upper()
-        while play_again not in ('Y', 'N'):
-            play_again = input("Please respond with Y or N: ").upper()
+        playAgain = input("Would you like to play again? (Y/N): ").upper()
+        while playAgain not in ('Y', 'N'):
+            playAgain = input("Please respond with Y or N: ").upper()
 
     print("Thank you for playing!")
 
