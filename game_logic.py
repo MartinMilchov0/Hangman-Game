@@ -1,13 +1,5 @@
 import random
 
-rules = '''Welcome to Hangman! Your goal is to guess a hidden word either by guessing individual 
-letters in the word or the entire word.
-You have 5 health at the start and everytime you guess a letter incorrectly you lose 1 health.
-But if you try to guess the entire word and dont get it right, you lose all your health at once.
-If you reach 0 health, you lose the game.
-You can choose the category of your word from 4 options - Fruits, Vegetables, Animals & School
-and you also get a score based on how well you perform(1 health = 100 points).
-Good luck and have fun!'''
 fruitList = ['apple','banana','avocado','grapes','watermelon','cherry','strawberry','kiwi','peach','pear','raspberry']
 vegetableList = ['potato','carrot','lettuce','cucumber','broccoli','garlic','tomato','turnip','cabbage','eggplant','pepper']
 animalList = ['wolf','tiger','bear','squirrel','cat','dog','monkey','pigeon','chicken','sheep','cow','pig']
