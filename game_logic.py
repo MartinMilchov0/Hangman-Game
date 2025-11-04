@@ -15,26 +15,9 @@ fruitList = ['apple','banana','avocado','grapes','watermelon','cherry','strawber
 vegetableList = ['potato','carrot','lettuce','cucumber','broccoli','garlic','tomato','turnip','cabbage','eggplant','pepper']
 animalList = ['wolf','tiger','bear','squirrel','cat','dog','monkey','pigeon','chicken','sheep','cow','pig']
 schoolList = ['pencil','teacher','student','desk','whiteboard','marker','class','classmate','chair','homework','lesson']
-wordList = []
 
-# Rules display and start prompt
-print(rules)
-
-while startGame.upper() != 'Y' and startGame.upper() != 'N':
-    startGame = input('Would you like to begin?')
-    print('')
-    if startGame.upper() == 'N':
-        playAgain = 'N'
-    
-# Full game loop
-while playAgain.upper() == 'Y':
-    categoryChoice = ''
-    health = 5
-    wordComplete = False
-    playerGuesses = []
-    incorrectGuesses = []
-    # Choosing category and word
-    while categoryChoice not in ('1', '2', '3', '4', '5'): 
+def choose_category():
+    while True: 
         categoryChoice = input(
         'Which category would you like to choose for your word?\n'
         'Fruits (Type 1)\n'
@@ -43,21 +26,28 @@ while playAgain.upper() == 'Y':
         'School (Type 4)\n'
         'Surprise Me! (Type 5)\n'
         )
+
         match categoryChoice:
             case '1':
-                wordList = fruitList
+                return fruitList
             case '2':
-                wordList = vegetableList
+                return vegetableList
             case '3':
-                wordList = animalList
+                return animalList
             case '4':
-                wordList = schoolList
+                return schoolList
             case '5':
-                wordList = schoolList + animalList + vegetableList + fruitList
+                return schoolList + animalList + vegetableList + fruitList
             case _:
                 print("Invalid choice. Please type 1, 2, 3, 4, or 5.")
-    hiddenWord = random.choice(wordList)
-    # Guessing word loop
+
+def play_game():
+    health = 5
+    wordComplete = False
+    playerGuesses = []
+    incorrectGuesses = []
+    hiddenWord = random.choice(choose_category())
+
     while health > 0 and wordComplete == False:
         for letter in hiddenWord:
             if letter in playerGuesses:
@@ -86,21 +76,12 @@ while playAgain.upper() == 'Y':
             if finalGuess.lower() == hiddenWord:
                 wordComplete = True
             else:health = 0
-    # End of game messages
+
     if health == 0:
         print('Unfortunately, you did not guess the word.')
         print('The correct word was:',hiddenWord)
     if wordComplete == True:
         print(hiddenWord)
         print('Great job! You guessed the word correctly!')
-    # Scoring
-    currentScore = health*100
-    totalScore = totalScore + currentScore
-    print('Score:',currentScore)
-    print('Total Score:',totalScore)
-    # Play again prompt
-    playAgain = input('Would you like to play again?(Y/N):')
-    if playAgain.upper() == 'N':
-        print('Thank you for playing!')
-    while playAgain.upper() != 'Y' and playAgain.upper() != 'N':
-        print('Please respond with Y or N.'); playAgain = input('Would you like to play again?(Y/N):')
+
+    return health*100
