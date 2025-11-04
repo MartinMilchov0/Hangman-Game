@@ -52,21 +52,29 @@ def play_game():
             else: print('_',end='')
         print("\nIncorrect guesses: " + ",".join(incorrectGuesses))
         print('Current health:',health)
+
         wordOrLetterChoice = input("Would you like to guess a letter(L) or guess the word(W):")
+
         if wordOrLetterChoice.upper() == 'L':
             letterGuess = input('Type a letter to make a guess:')
-            playerGuesses.append(letterGuess.lower())
             if len(letterGuess)>1:
-                print('You cannot use more than 1 letter!'); playerGuesses.pop()   
-            if letterGuess.lower() not in hiddenWord and len(letterGuess) == 1:
+                print('You cannot guess more than 1 letter!')
+                continue
+            if letterGuess.lower() in playerGuesses or letterGuess.lower() in incorrectGuesses:
+                print('You have already guessed that letter!')
+                continue
+            if letterGuess.lower() in hiddenWord:
+                playerGuesses.append(letterGuess.lower())
+            else:
+                incorrectGuesses.append(letterGuess.lower())
                 health -= 1
                 print('You lost 1 life!')
-                if letterGuess.lower() not in incorrectGuesses:
-                    incorrectGuesses.append(letterGuess.lower())
+
             wordComplete = True
             for letter in hiddenWord:
                 if letter not in playerGuesses:
                     wordComplete = False
+
         elif wordOrLetterChoice.upper() == 'W':
             finalGuess = ''
             finalGuess = input("Type the word you think is correct:")
