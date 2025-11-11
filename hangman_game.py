@@ -11,7 +11,7 @@ def main():
     Good luck and have fun!'''
     print(rules)
 
-    startGame = input("Would you like to begin? (Y for Yes/ Anything else for No): ").upper()
+    startGame = "".join((input("Would you like to begin? (Y for Yes/ Anything else for No): ").upper()).split())
     if startGame != 'Y':
         print("Maybe next time!")
         return
@@ -25,9 +25,9 @@ def main():
         print("Score:", score)
         print("Total Score:", totalScore)
 
-        playAgain = input("Would you like to play again? (Y/N): ").upper()
+        playAgain = "".join((input("Would you like to play again? (Y/N): ").upper()).split())
         while playAgain not in ('Y', 'N'):
-            playAgain = input("Please respond with Y or N: ").upper()
+            playAgain = "".join((input("Please respond with Y or N: ").upper()).split())
 
     print("Thank you for playing!")
 

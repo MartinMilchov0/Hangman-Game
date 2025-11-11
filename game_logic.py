@@ -7,14 +7,14 @@ schoolList = ['pencil','teacher','student','desk','whiteboard','marker','class',
 
 def choose_category():
     while True: 
-        categoryChoice = input(
+        categoryChoice =  "".join((input(
         'Which category would you like to choose for your word?\n'
         'Fruits (Type 1)\n'
         'Vegetables (Type 2)\n'
         'Animals (Type 3)\n'
         'School (Type 4)\n'
         'Surprise Me! (Type 5)\n'
-        )
+        )).split())
 
         match categoryChoice:
             case '1':
@@ -45,10 +45,10 @@ def play_game():
         print("\nIncorrect guesses: " + ",".join(incorrectGuesses))
         print('Current health:',health)
 
-        wordOrLetterChoice = input("Would you like to guess a letter(L) or guess the word(W):")
+        wordOrLetterChoice =  "".join((input("Would you like to guess a letter(L) or guess the word(W):")).split())
 
         if wordOrLetterChoice.upper() == 'L':
-            letterGuess = input('Type a letter to make a guess:')
+            letterGuess = "".join((input('Type a letter to make a guess:')).split())
             if len(letterGuess)>1:
                 print('You cannot guess more than 1 letter!')
                 continue
@@ -69,7 +69,7 @@ def play_game():
 
         elif wordOrLetterChoice.upper() == 'W':
             finalGuess = ''
-            finalGuess = input("Type the word you think is correct:")
+            finalGuess = "".join((input("Type the word you think is correct:")).split())
             if finalGuess.lower() == hiddenWord:
                 wordComplete = True
             else:health = 0
